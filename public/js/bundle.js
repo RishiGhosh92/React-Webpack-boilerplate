@@ -67645,6 +67645,10 @@ __webpack_require__(/*! semantic-ui-css/semantic.min.css */ "./node_modules/sema
 
 __webpack_require__(/*! ./style.css */ "./src/style.css");
 
+var _seed = __webpack_require__(/*! ./data/seed */ "./src/data/seed.js");
+
+var _seed2 = _interopRequireDefault(_seed);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -67677,6 +67681,7 @@ var ProductList = function (_Component) {
   _createClass(ProductList, [{
     key: "render",
     value: function render() {
+      var product = _seed2.default[0];
       return _react2.default.createElement(
         "div",
         null,
@@ -67684,8 +67689,13 @@ var ProductList = function (_Component) {
         _react2.default.createElement(
           "ul",
           null,
-          _react2.default.createElement(Product, { name: "A" }),
-          _react2.default.createElement(Product, { name: "B" })
+          _react2.default.createElement(Product, {
+            productImg: product.product_image_url,
+            title: product.title,
+            description: product.description,
+            submitterImg: product.submitter_avatar_url,
+            votes: product.votes
+          })
         )
       );
     }
@@ -67712,7 +67722,48 @@ var Product = function (_Component2) {
         _react2.default.createElement(
           _semanticUiReact.Item,
           null,
-          _react2.default.createElement(_semanticUiReact.Item.Image, { src: images["image-aqua.png"] })
+          _react2.default.createElement(_semanticUiReact.Item.Image, { src: images[this.props.productImg], size: "small" }),
+          _react2.default.createElement(
+            _semanticUiReact.Item.Content,
+            null,
+            _react2.default.createElement(
+              _semanticUiReact.Item.Header,
+              { as: "a" },
+              _react2.default.createElement(
+                _semanticUiReact.Icon.Group,
+                null,
+                _react2.default.createElement(_semanticUiReact.Icon, { name: "caret up" })
+              ),
+              this.props.votes
+            ),
+            _react2.default.createElement(
+              _semanticUiReact.Item.Meta,
+              null,
+              "Description"
+            ),
+            _react2.default.createElement(
+              _semanticUiReact.Item.Description,
+              null,
+              _react2.default.createElement(
+                "p",
+                null,
+                this.props.description
+              )
+            ),
+            _react2.default.createElement(
+              _semanticUiReact.Item.Extra,
+              null,
+              _react2.default.createElement(
+                "span",
+                null,
+                "Submitted By:"
+              ),
+              _react2.default.createElement(_semanticUiReact.Image, {
+                className: "ui avatar",
+                src: images[this.props.submitterImg]
+              })
+            )
+          )
         )
       );
     }
@@ -67725,6 +67776,57 @@ var Product = function (_Component2) {
 
 
 _reactDom2.default.render(_react2.default.createElement(ProductList, null), document.getElementById("content"));
+
+/***/ }),
+
+/***/ "./src/data/seed.js":
+/*!**************************!*\
+  !*** ./src/data/seed.js ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var data = [{
+  id: 1,
+  title: "Yellow Pail",
+  description: "On-demand sand castle construction expertise.",
+  url: "#",
+  votes: 23,
+  submitter_avatar_url: "daniel.jpg",
+  product_image_url: "image-aqua.png"
+}, {
+  id: 2,
+  title: "Supermajority: The Fantasy Congress League",
+  description: "Earn points when your favorite politicians pass legislation.",
+  url: "#",
+  votes: 33,
+  submitter_avatar_url: "images/avatars/kristy.png",
+  product_image_url: "images/products/image-rose.png"
+}, {
+  id: 3,
+  title: "Tinfoild: Tailored tinfoil hats",
+  description: "We already have your measurements and shipping address.",
+  url: "#",
+  votes: 34,
+  submitter_avatar_url: "images/avatars/veronika.jpg",
+  product_image_url: "images/products/image-steel.png"
+}, {
+  id: 4,
+  title: "Haught or Naught",
+  description: "High-minded or absent-minded? You decide.",
+  url: "#",
+  votes: 45,
+  submitter_avatar_url: "images/avatars/molly.png",
+  product_image_url: "images/products/image-yellow.png"
+}];
+
+exports.default = data;
 
 /***/ }),
 
