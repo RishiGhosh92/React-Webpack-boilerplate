@@ -5,8 +5,8 @@ const data = [
     description: "On-demand sand castle construction expertise.",
     url: "#",
     votes: 23,
-    submitter_avatar_url: "images/avatars/daniel.jpg",
-    product_image_url: "images/products/image-aqua.png"
+    submitter_avatar_url: "daniel.jpg",
+    product_image_url: "image-aqua.png"
   },
   {
     id: 2,

@@ -1,6 +1,5 @@
-var path = require("path");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+let path = require("path");
+let HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const publicPath = path.resolve(__dirname, "public");
 module.exports = {
@@ -32,17 +31,18 @@ module.exports = {
         ]
       },
       {
-        test: /\.(css)$/,
+        test: /\.css$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader
+            loader: MiniCssExtractPlugin.loader,
+            options: { publicPath: "../" }
           },
           "css-loader"
         ]
       },
       {
         test: /\.(woff|woff2|eot|ttf|svg)$/,
-        loader: "url-loader?limit=1024&name=fonts/[name].[ext]"
+        loader: "file-loader?limit=1024&name=icons/[name].[ext]"
       }
     ]
   },
